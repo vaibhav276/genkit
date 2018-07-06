@@ -49,7 +49,7 @@ export let randomGene = (config: Config, len: number): Gene => {
 export let score = (config: Config, population: Population): Population => {
     if (config.evalType === EvalType.ET_COST) {
         let costed: Array<Gene> = _.map(population.elements, (e) => {
-            e.cost = config.evalFn.call(this, e.code);
+            e.cost = config.evalFn(e.code);
             return e;
         });
         let minCostGene: Gene = _.min<Gene>(costed, (e) => e.cost);
@@ -67,7 +67,7 @@ export let score = (config: Config, population: Population): Population => {
 
     } else if (config.evalType === EvalType.ET_FITNESS) {
         let scored: Array<Gene> = _.map(population.elements, (e) => {
-            e.fitness = config.evalFn.call(this, e.code);
+            e.fitness = config.evalFn(e.code);
             e.score = e.fitness;
             return e;
         });
@@ -108,16 +108,15 @@ let maybeMutate = (config: Config, gene: Gene, chance: number): Gene => {
 
     let index: number = _.random(gene.code.length - 1);
     let res: Gene = _.clone(gene);
-    res.code[index] = config.mutate.call(this,
-                                         res.code[index],
-                                         config.dnaCodes);
+    res.code[index] = config.mutate(res.code[index],
+                                    config.dnaCodes);
     return res;
 }
 
 /** Mate two genes */
 let mateWrapper = (config: Config, gene1: Gene, gene2: Gene): Gene => {
     let res: Gene = _.clone(gene1);
-    res.code = config.mate.call(this, gene1.code, gene2.code);
+    res.code = config.mate(gene1.code, gene2.code);
     return res;
 }
 
