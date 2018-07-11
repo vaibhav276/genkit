@@ -13,5 +13,10 @@
       "url": "https://github.com/vaibhav276/genkit.git"
    },
    "author": "Vaibhav Pujari",
-   "license": "MIT"
+   "license": "MIT",
+   "keywords": [
+      "genetic",
+      "genetic algorithm",
+      "typescript"
+   ]
 }
