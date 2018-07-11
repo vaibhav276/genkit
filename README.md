@@ -105,7 +105,7 @@ You should apply some convergence checks after each step in evolution to find ou
 let best_gene = _.max(p_scored.elements, (e) => e.score);
 ```
 
-That's it. For a working sample application, refer to this project: https://github.com/vaibhav276/genkit-examples/target-text. (Most relevant code is in https://github.com/vaibhav276/genkit-examples/blob/master/target-text/src/app/ga-runner.service.ts)
+That's it. For a working sample application, refer to this project: https://github.com/vaibhav276/genkit-examples/tree/master/target-text. (Most relevant code is in https://github.com/vaibhav276/genkit-examples/blob/master/target-text/src/app/ga-runner.service.ts)
 
 
 
